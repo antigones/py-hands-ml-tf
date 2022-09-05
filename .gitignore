@@ -131,3 +131,5 @@ dmypy.json
 dataset_csv/
 dataset/test/
 dataset/train/
+
+azure_ml/job_script/config.json
