@@ -29,8 +29,9 @@ try:
     print('Found existing compute target')
 except ComputeTargetException:
     print('Creating a new compute target...')
-    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_NC6', 
-                                                           max_nodes=1)
+    compute_config = AmlCompute.provisioning_configuration(
+        vm_size='STANDARD_NC6', 
+        max_nodes=1)
 
     # create the cluster
     compute_target = ComputeTarget.create(ws, cluster_name, compute_config)
@@ -49,8 +50,8 @@ for name, ct in compute_targets.items():
 # the training logic is in the tf_mnist.py file.
 #shutil.copy('./py_hands_job.py', script_folder)
 
-#tf_env = Environment.get(ws, name='AzureML-TensorFlow-2.0-GPU')
-tf_env = Environment.get(ws, name='AzureML-tensorflow-2.4-ubuntu18.04-py37-cuda11-gpu')
+#tf_env = Environment.get(ws, name='AzureML-tensorflow-2.4-ubuntu18.04-py37-cuda11-gpu')
+tf_env = Environment.get(ws, name='AzureML-tensorflow-2.7-ubuntu20.04-py38-cuda11-gpu')
 
 src = ScriptRunConfig(source_directory=script_folder,
                       script='py_hands_job.py',

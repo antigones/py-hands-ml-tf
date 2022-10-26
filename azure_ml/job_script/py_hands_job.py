@@ -28,21 +28,21 @@ py_hands_dataset.download('/tmp/py-hands')
 # untar files
 
 file = tarfile.open('/tmp/py-hands/train.tar')
-# extracting file
+# extracting train files
 file.extractall('./dataset/')
 file.close()
 
 file = tarfile.open('/tmp/py-hands/val.tar')
-# extracting file
+# extracting val files
 file.extractall('./dataset/')
 file.close()
 
 file = tarfile.open('/tmp/py-hands/test.tar')
-# extracting file
+# extracting test files
 file.extractall('./dataset/')
 file.close()
 
-
+print(tf. __version__)
 classes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 
 train_dir = "./dataset/train"
