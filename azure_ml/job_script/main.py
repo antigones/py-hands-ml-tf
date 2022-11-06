@@ -50,8 +50,8 @@ for name, ct in compute_targets.items():
 # the training logic is in the tf_mnist.py file.
 #shutil.copy('./py_hands_job.py', script_folder)
 
-#tf_env = Environment.get(ws, name='AzureML-tensorflow-2.4-ubuntu18.04-py37-cuda11-gpu')
-tf_env = Environment.get(ws, name='AzureML-tensorflow-2.7-ubuntu20.04-py38-cuda11-gpu')
+#tf_env = Environment.get(ws, name='AzureML-tensorflow-2.4-ubuntu18.04-py37-cuda11-gpu', version=48)
+tf_env = Environment.get(ws, name='AzureML-tensorflow-2.7-ubuntu20.04-py38-cuda11-gpu', version=13)
 
 src = ScriptRunConfig(source_directory=script_folder,
                       script='py_hands_job.py',

@@ -15,7 +15,9 @@ from azureml.core import Workspace
 import mlflow
 import mlflow.tensorflow
 
-mlflow.tensorflow.autolog(every_n_iter=2)
+mlflow.start_run()
+#mlflow.keras.autolog()
+mlflow.tensorflow.autolog()
 
 # load training files from dataset
 ws = Workspace.from_config()
@@ -108,7 +110,7 @@ model.compile(
     metrics=["accuracy"],
 )
 
-epochs = 80
+epochs = 2
 
 
 print(model.summary())
@@ -122,7 +124,22 @@ history = model.fit(
     validation_steps=int(np.ceil(val_data_gen.n / float(batch_size))),
 )
 # save model
-model.save(exported_model_name)
+
+#model.save(exported_model_name)
+
+print("Registering the model via MLFlow")
+
+# saving the model to a file
+#mlflow.keras.save_model(
+#    keras_model=model,
+#    path=os.path.join("t_model", "trained_model"),
+#)
+
+#mlflow.tensorflow.save_model(
+#    mlflow_model=model,
+#    path=os.path.join("t_model", "trained_model"),
+#)
+
 
 """
 model = tf.keras.models.load_model(
