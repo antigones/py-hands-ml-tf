@@ -1,0 +1,14 @@
+$schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
+name: py-hands
+endpoint_name: py-hands
+model: azureml:py-hands-model:1
+code_configuration:
+  code: ./
+  scoring_script: score.py
+environment:
+  conda_file: ./model/conda.yaml
+  image: mcr.microsoft.com/azureml/mlflow-ubuntu18.04-py37-cpu-inference:20220926.v1
+environment_variables:
+  "PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION": "python"
+instance_type: Standard_DS2_v2
+instance_count: 1

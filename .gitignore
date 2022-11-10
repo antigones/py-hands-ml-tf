@@ -134,3 +134,5 @@ dataset/train/
 dataset/val/
 azure_ml/job_script/config.json
 dataset/
+
+azure_ml/job_script/consume.py
