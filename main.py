@@ -14,6 +14,7 @@ import tensorflow_hub as hub
 # base_dir ='./dataset'
 
 # classes = ['0','1','2','3','4','5','6','7','8']
+start = time.time()
 classes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 
 train_dir = "./dataset/train"
@@ -75,7 +76,7 @@ model = tf.keras.Sequential(
 
 model.compile(
     optimizer="adam",
-    loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+    loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
     metrics=["accuracy"],
 )
 
@@ -92,6 +93,8 @@ history = model.fit(
     validation_data=val_data_gen,
     validation_steps=int(np.ceil(val_data_gen.n / float(batch_size))),
 )
+end = time.time()
+print(end - start)
 # save model
 model.save(exported_model_name)
 
